@@ -4,9 +4,10 @@ class Ability
   def initialize(current_user)
     current_user ||= User.new
     can :read, User, id: current_user.id
+    can :read, Reward, id: current_user.id
 
-    # if current_user.admin?
-    #   can :manage, :all
-    # end
+    if current_user.admin?
+      can :manage, :all
+    end
   end
 end

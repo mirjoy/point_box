@@ -1,0 +1,17 @@
+<h1>Rewards</h1>
+<table>
+  <% @rewards.each do |reward| %>
+    <tr>
+      <td class="rewards">
+        <p>
+          <%= reward.name %>
+        </p>
+      </td>
+      <td class="rewards">
+        <p>
+          Point Value: <%= reward.point_value %>
+        </p>
+      </td>
+    </tr>
+  <% end  %>
+</table>

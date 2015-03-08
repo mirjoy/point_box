@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User tries to login" do
-  xit "cannot sign in if not registered" do
+  it "cannot sign in if not registered" do
     visit login_path
     fill_in 'session[user_name]', with: "sdf"
     fill_in 'session[password]', with: "sdf"
@@ -9,8 +9,8 @@ RSpec.describe "User tries to login" do
     expect(page).to have_content('Invalid')
   end
 
-  xit 'cannot sign in without a valid password' do
-    user = User.create(user_name: 'Miriam', password: 'Joy')
+  it 'cannot sign in without a valid password' do
+    user = User.create(name: 'Miriam', password: 'Joy')
     visit login_path
     fill_in 'session[user_name]', with: "Miriam"
     fill_in 'session[password]', with: "Josdf"
@@ -18,8 +18,8 @@ RSpec.describe "User tries to login" do
     expect(page).to have_content('Invalid')
   end
 
-  xit "can sign in if valid" do
-    user = User.create(user_name: 'Miriam', password: 'Joy')
+  it "can sign in if valid" do
+    user = User.create(name: 'Miriam', password: 'Joy')
     visit login_path
     fill_in 'session[user_name]', with: "Miriam"
     fill_in 'session[password]', with: "Joy"
@@ -27,8 +27,8 @@ RSpec.describe "User tries to login" do
     expect(page).to have_content('Welcome')
   end
 
-  xit 'can sign out once logged in' do
-    user = User.create(user_name: 'Miriam', password: 'Joy')
+  it 'can sign out once logged in' do
+    user = User.create(name: 'Miriam', password: 'Joy')
     visit login_path
     fill_in 'session[user_name]', with: "Miriam"
     fill_in 'session[password]', with: "Joy"

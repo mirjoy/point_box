@@ -18,7 +18,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in(user)
       flash[:welcome] = "Welcome"
-      redirect_to dashboard_path
+      if user.admin?
+        redirect_to admin_path
+      else
+        redirect_to dashboard_path
+      end
     else
       flash[:error] = "Invalid username/password combo. Try again"
       render :new
@@ -27,6 +31,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    flash[:goodbye] = "Goodbye"
     redirect_to root_url
   end
 
