@@ -1,1 +1,14 @@
-<h1>Your Points</h1>
+<h1>Welcome!</h1>
+<h4>Please Sign In:</h4>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <p>
+  <%= f.label 'Name:' %>
+  <%= f.text_field :user_name %>
+  </p>
+  <p>
+  <%= f.label 'Password:' %>
+  <%= f.password_field :password %>
+  </p>
+  <%= f.submit "Sign In" %>
+  <% end %>

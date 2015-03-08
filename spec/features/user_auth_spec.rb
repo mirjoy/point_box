@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
+  let(:administrator) do
+    User.create(name: 'Richard', password: 'hi', role: 1)
+  end
+  let(:user1) do
+    User.create(name: 'Richie', password: 'hi', role: 0)
+  end
+  let(:user2) do
+    User.create(name: 'Rich', password: 'hi', role: 0)
+  end
   describe "when an admin is logged in" do
-    let(:administrator) do
-      User.create(name: 'Richard', password: 'hi', role: 1)
-    end
-    let(:user2) do
-      User.create(name: 'Rich', password: 'hi', role: 0)
-    end
-
     xit "is able to see info for all users" do
       ApplicationController.any_instance.stub(:current_user).and_return(administrator)
+      # allow_any_instance_of(User).to receive(:current_user).and_return(administrator)
       visit '/points'
       assert page.has_content?(5)
       assert page.has_content?(10)
@@ -21,14 +24,17 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "when a user is logged in" do
-    let(:user1) do
-      User.create(name: 'Richie', password: 'hi', role: 0)
-    end
-
     it "can see their points" do
       ApplicationController.any_instance.stub(:current_user).and_return(user1)
       visit '/dashboard'
       expect(page).to have_content('Points')
+    end
+  end
+
+  describe "when a user is not logged in" do
+    it "cannot see the dashboard" do
+      visit '/dashboard'
+      expect(page).to have_content("You must sign in to see this information.")
     end
   end
 

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-
-  get '/dashboard', to: 'sessions#new'
-  # root to: 'sessions#dashboard'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/dashboard/', to: 'sessions#index'
+  root to: 'sessions#new'
 
 end
