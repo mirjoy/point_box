@@ -26,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <% if current_user.admin?%>
-            <li><%= link_to "Admin", admin_path %></li>
+            <li><%= link_to "Admin", admin_index_path %></li>
             <% end %>
           <li><%= link_to "Your Dashboard", dashboard_path %></li>
           <li><%= link_to "Rewards", rewards_path %></li>

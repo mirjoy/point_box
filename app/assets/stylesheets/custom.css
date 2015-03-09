@@ -3,10 +3,19 @@ body {
 
 }
 
+h1 {
+  text-align: center;
+}
+
 .navbar {
   background-color: #dddddd;
 }
 
-.rewards {
-  padding: 5px;
+
+.users, .rewards {
+  margin: 20px;
+  padding: 10px;
+  padding-left:20px;
+  background-color: #dddddd;
+  border-radius: 20px;
 }

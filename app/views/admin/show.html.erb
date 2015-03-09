@@ -1,0 +1,25 @@
+
+<h1>Change <%= @user.name.capitalize %>'s Points </h1>
+
+<p>
+  Current Available Points:
+  <%= @user.available_points %>
+</p>
+
+<%= form_for(:admin, url: admin_path, method: :put) do |f| %>
+  <% f.hidden_field :user_id, :value => @user.id %>
+<p>
+  <%= f.label 'Update Available Points:' %>
+  <%= f.text_field :available_points %>
+</p>
+<p>
+  Current Redeemed Points:
+  <%= @user.redeemed_points %>
+</p>
+
+<p>
+  <%= f.label 'Redeemed Points:' %>
+  <%= f.text_field :redeemed_points %>
+</p>
+<%= f.submit "Update Points" %>
+<% end %>

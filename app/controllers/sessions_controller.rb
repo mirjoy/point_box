@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
   def index
     if current_user
       authorize! :read, @current_user
-      @points = current_user.points
+      @available = current_user.available_points
+      @redeemed = current_user.redeemed_points
+      # @rewards = current_user.rewards
     else
       flash[:error] = "You must sign in to see this information."
       redirect_to root_url
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
       log_in(user)
       flash[:welcome] = "Welcome"
       if user.admin?
-        redirect_to admin_path
+        redirect_to admin_index_path
       else
         redirect_to dashboard_path
       end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/rewards', to: 'rewards#index'
 
-  get '/admin', to: 'admins#index'
+  resources :admin
   root to: 'sessions#new'
 
 end

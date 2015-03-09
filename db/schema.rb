@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308203746) do
+ActiveRecord::Schema.define(version: 20150308205537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "points", force: :cascade do |t|
-    t.integer  "available_points"
-    t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "redeemed_points"
-  end
 
   create_table "rewards", force: :cascade do |t|
     t.text    "name"
@@ -37,9 +29,11 @@ ActiveRecord::Schema.define(version: 20150308203746) do
   create_table "users", force: :cascade do |t|
     t.text     "name"
     t.text     "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "role"
+    t.integer  "available_points", default: 0
+    t.integer  "redeemed_points",  default: 0
   end
 
 end

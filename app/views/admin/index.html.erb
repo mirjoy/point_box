@@ -1,0 +1,16 @@
+<h1>All Users</h1>
+<div class="row">
+
+    <% @users.each do |user| %>
+    <div class="users col-md-3">
+    <p>Name: <%= user.name %></p>
+    <p>Available Points: <%= user.available_points %></p>
+    <p>Redeemed Points: <%= user.redeemed_points %></p>
+    <p>Rewards Received:
+      <% user.rewards.each do |reward|  %>
+        reward
+      <% end %></p>
+      <%= link_to "Edit Points", admin_path(user.id) %>
+    </div>
+    <% end %>
+</div>

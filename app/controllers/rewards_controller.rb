@@ -8,4 +8,8 @@ class RewardsController < ApplicationController
       redirect_to root_url
     end
   end
+
+  def create
+
+  end
 end

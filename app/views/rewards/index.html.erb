@@ -1,17 +1,30 @@
 <h1>Rewards</h1>
-<table>
-  <% @rewards.each do |reward| %>
-    <tr>
-      <td class="rewards">
+  <div class="row">
+    <% @rewards.each do |reward| %>
+      <div class="rewards col-md-3">
+        <p><%= reward.name %></p>
+        <p>Point Value: <%= reward.point_value %></p>
+
+
+        <%= form_for(:admin, url: admin_path, method: :put) do |f| %>
+        <% f.hidden_field :user_id, :value => @user.id %>
         <p>
-          <%= reward.name %>
+          <%= f.label 'Update Available Points:' %>
+          <%= f.text_field :available_points %>
         </p>
-      </td>
-      <td class="rewards">
         <p>
-          Point Value: <%= reward.point_value %>
+          Current Redeemed Points:
+          <%= @user.redeemed_points %>
         </p>
-      </td>
-    </tr>
-  <% end  %>
+
+        <p>
+          <%= f.label 'Redeemed Points:' %>
+          <%= f.text_field :redeemed_points %>
+        </p>
+        <%= f.submit "Choose Reward" %>
+        <% end %>
+
+      </div>
+    <% end  %>
+  </div>
 </table>
