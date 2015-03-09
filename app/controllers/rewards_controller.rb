@@ -35,4 +35,14 @@ class RewardsController < ApplicationController
     end
     redirect_to rewards_path
   end
+
+  def edit
+
+  end
+
+  def destroy
+    reward = Reward.find(params[:id])
+    reward.destroy
+    redirect_to rewards_path
+  end
 end

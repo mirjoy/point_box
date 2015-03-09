@@ -13,6 +13,12 @@
         <%= f.submit "Choose This Reward" %>
         <% end %>
 
+        <% if current_user.admin? %>
+        <br>
+        <p><%= link_to "Edit this Reward", edit_reward_path(current_user.id) %></p>
+        <p><%= link_to "Delete this Reward", reward_path(reward), method: :delete %></p>
+        <% end %>
+
       </div>
     <% end  %>
   <div class="reward-button col-md-12">

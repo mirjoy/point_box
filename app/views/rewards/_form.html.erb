@@ -1,0 +1,7 @@
+<%= form_for(:reward, url: rewards_path, method: :post) do |f| %>
+<p><%= f.label 'Description: ' %>
+<%= f.text_field :name %></p>
+<p><%= f.label 'Point Value: ' %>
+<%= f.text_field :point_value %></p>
+<%= f.submit %>
+<% end %>
