@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/dashboard/', to: 'sessions#index'
 
-  get '/rewards', to: 'rewards#index'
-
-  resources :admin
+  resources :rewards
+  resources :admin, except: [:edit ]
   root to: 'sessions#new'
 
 end

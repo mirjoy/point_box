@@ -21,4 +21,12 @@ class AdminController < ApplicationController
     flash[:changed] = "Changes Made"
     redirect_to admin_path
   end
+
+  def destroy
+    user = User.find(params[:id])
+    user.available_points = 0
+    user.redeemed_points = 0
+    user.save
+    redirect_to admin_path
+  end
 end

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
       authorize! :read, @current_user
       @available = current_user.available_points
       @redeemed = current_user.redeemed_points
-      # @rewards = current_user.rewards
+      @redeemed_rewards = current_user.rewards
     else
       flash[:error] = "You must sign in to see this information."
       redirect_to root_url

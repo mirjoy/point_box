@@ -19,3 +19,12 @@ h1 {
   background-color: #dddddd;
   border-radius: 20px;
 }
+
+.reward-button {
+  padding: 10px;
+  background-color: #dddddd;
+  border-radius: 20px;
+  text-align: center;
+  font-weight:bold;
+
+}

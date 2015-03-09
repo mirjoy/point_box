@@ -3,12 +3,14 @@
 
     <% @users.each do |user| %>
     <div class="users col-md-3">
-    <p>Name: <%= user.name %></p>
+    <p>Name: <%= user.name.capitalize %></p>
     <p>Available Points: <%= user.available_points %></p>
     <p>Redeemed Points: <%= user.redeemed_points %></p>
     <p>Rewards Received:
       <% user.rewards.each do |reward|  %>
-        reward
+        <p>
+        <%= reward.name %>
+        </p>
       <% end %></p>
       <%= link_to "Edit Points", admin_path(user.id) %>
     </div>
